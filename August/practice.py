@@ -1,21 +1,34 @@
-import pprint
+x = int(input())
+for tc in range(1, x+1):
+    chars = input()
+    a = []
+    for char in chars:
+        if char =='{':
+            a.append(char)
+        elif char =='(':
+            a.append(char)            
+            
+        elif char =='}' :
+            if len(a) == 0:
+                result = 0
+                break
+            elif len(a) != 0 and a[-1]=='{':
+                a.pop()
+            else:
+                result = 0
+        elif char ==')':
+            if len(a) == 0:
+                result = 0
+                break
+            elif len(a) != 0  and a[-1]=='(':
+                a.pop()
+            else:
+                result = 0    
+                
+        if len(a) == 0:
+                result = 1
+        else:
+                result = 0
+        
+    print(f'#{tc} {result}')
 
-arr = [[0]*5 for ar in range(5)]
-A = [9, 20, 2, 18, 11, 19, 1, 25, 3, 21, 8, 24, 10, 17, 7, 15, 4, 16, 5 ,6, 12, 13, 22, 23, 14]
-a = 0
-for i in range(5):
-    for j in range(5):
-        arr[i][j] = A[a]
-        a += 1
-
-pprint.pprint(arr, indent=4, width=50)
-print()
-
-num = 1
-for i in range(5):
-    for j in range(5):
-        if i == 0:
-            arr[i][j] = num
-            num += 1
-
-pprint.pprint(arr, indent=4, width=50)
